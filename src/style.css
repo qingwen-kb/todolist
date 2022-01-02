@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header {
+  background: rgb(185, 184, 184);
+  flex: 1 1 100%;
+}
+
+main {
+  display: flex;
+  height: 100vh;
+  flex: 1 1 100%;
+}
+
+aside {
+  background: rgb(231, 231, 231);
+  flex: 1 1 30%;
+}
+
+section {
+  background: #fff;
+  flex: 1 1 70%;
+}
+
+.task {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 2%;
+  flex: 1 1 100%;
+}
+
+.task-fields {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 80%;
+}
+.task-fields .checkbox {
+  flex: 1 1 10%;
+}
+
+.task-fields p {
+  flex: 1 1 40%;
+}
+.task-fields .task-text {
+  display: flex;
+  align-items: center;
+  flex: 1 1 50%;
+  width: 100%;
+}
+
+.task-description {
+  position: absolute;
+}
+
+.task .controlBtn {
+  display: flex;
+  flex: 1 1 20%;
+}
+
+.controlBtn div {
+  margin: auto;
+}
+
+.is-done {
+  text-decoration: line-through;
+}
+
+input:checked ~ p {
+  text-decoration: line-through;
+}
+
+.edit-task {
+  position: relative;
+  padding: 1%;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  display: none;
+}
+
+.edit-task-active {
+  display: block;
+}

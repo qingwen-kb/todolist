@@ -1,27 +1,25 @@
 function createTask(userInput) {
-    let status = false;
+    const {
+        taskDescription,
+        dueDate,
+    } = userInput;
+    let isDone = false;
     const proto = {
         type: "task",
         setDone() {
-            return this.isDone = true;
+            return this.isDone = !this.isDone;
         },
-        setNotDone() {
-            return this.isDone = false;
-        }
+
     }
     return Object.assign(Object.create(proto), {
-        task: userInput,
-        isDone: status,
-
+        taskDescription,
+        dueDate,
+        isDone,
     })
 }
 
-export default function createToDoList(database, name) {
+function createToDoList(listName) {
     let list = [];
-    database.forEach((input) => {
-        list.push(createTask(input));
-    })
-
     const proto = {
         type: "list",
         getNumOfTasks() {
@@ -36,11 +34,6 @@ export default function createToDoList(database, name) {
             }
             return completed;
         },
-        printTasks() {
-            for (let task of this.list) {
-                console.log(task);
-            }
-        },
         printNotDoneTask() {
             for (let task of this.list) {
                 if (!task.isDone) {
@@ -48,20 +41,31 @@ export default function createToDoList(database, name) {
                 }
             }
         },
+        printTasks() {
+            for (let task of this.list) {
+                console.log(task);
+            }
+        },
         addTask(input) {
             return this.list.push(createTask(input));
         },
-        removeTaskByTitle(key) {
+        editTaskDescription(newDescription, foundTaskIdx) {
+            this.list[foundTaskIdx].taskDescription = newDescription;
+        },
+        removeTaskByDescription(key) {
             this.list.forEach((task, idx) => {
-                if (task.task.title.toLowerCase() === key.toLowerCase()) {
+                if (task.taskDescription.toLowerCase() === key.toLowerCase()) {
                     this.list.splice(idx, 1);
                 }
             })
         }
-
     }
     return Object.assign(Object.create(proto), {
-        name,
+        listName,
         list
     });
 }
+export {
+    createTask,
+    createToDoList
+};
