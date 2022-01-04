@@ -1,11 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Tinos&display=swap");
+
 * {
   box-sizing: border-box;
+
   margin: 0;
   padding: 0;
 }
 .flex-container {
   display: flex;
   flex-wrap: wrap;
+}
+
+body {
+  font-family: "Tinos", serif;
 }
 
 header {
@@ -20,8 +27,53 @@ main {
 }
 
 aside {
-  background: rgb(231, 231, 231);
+  background: rgb(247, 245, 245);
   flex: 1 1 auto;
+}
+
+.project-container {
+  font-size: 1.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-title {
+  padding: 2%;
+  flex: 1 1 100%;
+}
+
+.project-title:hover {
+  box-shadow: 0 0 5px #ccc;
+}
+
+.add-project-form {
+  display: flex;
+}
+
+.add-project-form input {
+  background: rgb(241, 241, 241);
+  font-family: inherit;
+  font-size: inherit;
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  padding: 5px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.add-project-form input[type="text"] {
+  flex: 1 1 70%;
+}
+
+.add-project-form input[type="submit"] {
+  flex: 1 1 30%;
+}
+
+.add-project-form input[type="text"]:focus {
+  background-color: #fff;
+  border-color: #000;
 }
 
 section {
@@ -36,10 +88,13 @@ section {
   align-items: center;
   padding: 2%;
   flex: 1 1 100%;
+
+  transition: 0.3s box-shadow;
 }
 
 .task:hover {
-  color: red;
+  box-shadow: 0 0 5px #ccc;
+  cursor: pointer;
 }
 
 .task-fields {

@@ -12,7 +12,7 @@ const sort = document.querySelector(".sort");
 const listManager = listManagerObj();
 listManager.initDefaultList();
 renderActiveList();
-// renderProjectList();
+renderProjectList();
 projectContainer.addEventListener("click", (event) => {
   listManager.setActiveList(event.target.textContent);
   renderActiveList();
@@ -25,6 +25,7 @@ addProjectForm.addEventListener("submit", (event) => {
   const createNewList = listManager.createList(userInput);
   if (!createNewList) {
     const projectTitle = document.createElement("p");
+    projectTitle.classList.add("project-title");
     projectTitle.textContent = userInput;
     projectContainer.appendChild(projectTitle);
   }
@@ -45,21 +46,33 @@ addTaskForm.addEventListener("submit", (event) => {
 
 function renderActiveList() {
   taskContainer.textContent = "";
-
   listManager.getActiveList().list.forEach((task) => {
     const para = component(task);
     taskContainer.appendChild(para);
   });
 }
 
-// function renderProjectList() {
-//   for (let i = 0; i < localStorage.length; i++) {
-//     let key = JSON.parse(localStorage.getItem(localStorage.key(i))).listName;
-//     const projectTitle = document.createElement("p");
-//     projectTitle.textContent = key;
-//     projectContainer.appendChild(projectTitle);
-//   }
-// }
+function renderProjectList() {
+  const sortProjectList = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    let key = JSON.parse(localStorage.getItem(localStorage.key(i))).listName;
+    sortProjectList.push(key);
+  }
+  const defaultIdx = sortProjectList.findIndex(
+    (element) => element === "Default"
+  );
+  const projectTitle = document.createElement("p");
+  projectTitle.textContent = "Default";
+  projectTitle.classList.add("project-title");
+  projectContainer.appendChild(projectTitle);
+  sortProjectList.splice(defaultIdx, 1);
+  sortProjectList.forEach((key) => {
+    const projectTitle = document.createElement("p");
+    projectTitle.textContent = key;
+    projectTitle.classList.add("project-title");
+    projectContainer.appendChild(projectTitle);
+  });
+}
 
 taskContainer.addEventListener("click", (event) => {
   if (event.target.type === "checkbox") {

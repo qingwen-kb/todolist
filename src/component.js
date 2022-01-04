@@ -27,9 +27,10 @@ export default function addTaskComponent(taskInput) {
   taskDescribe.textContent = `${taskInput.taskDescription}`;
   taskDueDate.textContent = `${taskInput.formatDate}`;
   taskDayFromNow.textContent = `${taskInput.dayFromNow}`;
-
-  editBtn.textContent = "edit";
-  delBtn.textContent = "delete";
+  editBtn.innerHTML = "Edit";
+  delBtn.innerHTML = "Delete";
+  // editBtn.innerHTML = "<i class='far fa-edit'></i>";
+  // delBtn.innerHTML = "<i class='far fa-trash-alt'></i>";
   controlBtn.append(editBtn, delBtn);
   controlBtn.classList.add("controlBtn");
   taskText.append(taskDescribe, editTaskDescribe);
