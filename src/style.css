@@ -21,7 +21,7 @@ main {
 
 aside {
   background: rgb(231, 231, 231);
-  flex: 1 1 30%;
+  flex: 1 1 auto;
 }
 
 section {
@@ -36,6 +36,10 @@ section {
   align-items: center;
   padding: 2%;
   flex: 1 1 100%;
+}
+
+.task:hover {
+  color: red;
 }
 
 .task-fields {
@@ -73,10 +77,6 @@ section {
 }
 
 .is-done {
-  text-decoration: line-through;
-}
-
-input:checked ~ p {
   text-decoration: line-through;
 }
 
