@@ -42,6 +42,9 @@ export default function listManagerObj() {
       }
     },
     createList(userInput) {
+      if (userInput === "") {
+        return;
+      }
       const foundList = this.storageList.find(
         (element) => element.listName.toLowerCase() === userInput.toLowerCase()
       );
@@ -99,6 +102,7 @@ export default function listManagerObj() {
       this.activeListIdx = storageList.findIndex(
         (element) => element.listName === this.activeList
       );
+      return this.activeList;
     },
     updateListEntry(entry) {
       storageList[this.activeListIdx].addTask(entry);

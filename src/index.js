@@ -1,8 +1,10 @@
 import listManagerObj from "./listManager.js";
 import component from "./component.js";
+
 import "./style.css";
 
 const body = document.querySelector("body");
+
 const addTaskForm = document.querySelector(".add-task-form");
 const addProjectForm = document.querySelector(".add-project-form");
 const taskContainer = document.querySelector(".task-container");
@@ -10,11 +12,14 @@ const projectContainer = document.querySelector(".project-container");
 const sort = document.querySelector(".sort");
 
 const listManager = listManagerObj();
+
 listManager.initDefaultList();
 renderActiveList();
-renderProjectList();
+renderProjectList("Default");
+
 projectContainer.addEventListener("click", (event) => {
-  listManager.setActiveList(event.target.textContent);
+  let activeList = listManager.setActiveList(event.target.textContent);
+  renderProjectList(activeList);
   renderActiveList();
 });
 
@@ -52,7 +57,8 @@ function renderActiveList() {
   });
 }
 
-function renderProjectList() {
+function renderProjectList(active) {
+  projectContainer.textContent = "";
   const sortProjectList = [];
   for (let i = 0; i < localStorage.length; i++) {
     let key = JSON.parse(localStorage.getItem(localStorage.key(i))).listName;
@@ -65,12 +71,18 @@ function renderProjectList() {
   projectTitle.textContent = "Default";
   projectTitle.classList.add("project-title");
   projectContainer.appendChild(projectTitle);
+  if (active === "Default") {
+    projectTitle.classList.add("active");
+  }
   sortProjectList.splice(defaultIdx, 1);
   sortProjectList.forEach((key) => {
     const projectTitle = document.createElement("p");
     projectTitle.textContent = key;
     projectTitle.classList.add("project-title");
     projectContainer.appendChild(projectTitle);
+    if (key === active) {
+      projectTitle.classList.add("active");
+    }
   });
 }
 
