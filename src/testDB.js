@@ -1,21 +1,21 @@
 let database = [];
 
 const userInput = {
-  taskDescription: "Get milk",
+  taskDescription: "To get grocery and pick up laundry",
   dueDate: "2022-01-03",
 };
 
 const userInput_2 = {
-  taskDescription: "Wash Clothes",
+  taskDescription: "Complete Javascript of The Odin Project",
   dueDate: "2022-01-05",
 };
 const userInput_3 = {
-  taskDescription: "Learn OOP",
+  taskDescription: "Any activity that involves creativity",
   dueDate: "2022-01-04",
 };
 
 const userInput_4 = {
-  taskDescription: "Mobile Game",
+  taskDescription: "Grab dinner and personal time off",
   dueDate: "2022-01-06",
 };
 
