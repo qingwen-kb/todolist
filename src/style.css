@@ -167,7 +167,8 @@ section {
 }
 
 .task-description {
-  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .task .controlBtn {
