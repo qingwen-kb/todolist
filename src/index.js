@@ -3,13 +3,20 @@ import component from "./component.js";
 
 import "./style.css";
 
-const body = document.querySelector("body");
-
 const addTaskForm = document.querySelector(".add-task-form");
 const addProjectForm = document.querySelector(".add-project-form");
 const taskContainer = document.querySelector(".task-container");
 const projectContainer = document.querySelector(".project-container");
-const sort = document.querySelector(".sort");
+const addBtnTrigger = document.querySelectorAll(".triggerscale");
+
+addBtnTrigger.forEach((trigger) => {
+  trigger.addEventListener("mouseover", function () {
+    trigger.classList.toggle("clicked");
+  });
+  trigger.addEventListener("mouseout", function () {
+    trigger.classList.toggle("clicked");
+  });
+});
 
 const listManager = listManagerObj();
 

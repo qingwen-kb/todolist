@@ -1,7 +1,5 @@
 import database from "./testDB.js";
 import { createTask, createToDoList } from "./createToDo.js";
-import { format } from "date-fns";
-import { storageAvailable } from "./storage.js";
 
 export default function listManagerObj() {
   let storageList = [];

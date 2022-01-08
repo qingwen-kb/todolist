@@ -26,7 +26,6 @@ main {
 
 aside {
   flex: 1 1 auto;
-
   border: 2px solid #f1f1f1;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -43,6 +42,7 @@ aside {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  flex: 1 1 100%;
 }
 
 .project-title {
@@ -56,29 +56,39 @@ aside {
 
 .add-project-form {
   display: flex;
-  padding: 5%;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 100%;
 }
 
 .add-project-form input {
+  height: auto;
   padding: 2%;
   border: none;
   font-family: inherit;
   font-size: inherit;
   cursor: pointer;
   margin: 1%;
-  flex: 1 1 60%;
+  flex: 1 1 50%;
 }
 
-.add-project-btn {
-  background: rgb(255, 255, 255);
-  font-size: 1.3rem;
+.triggerscale .add-project-btn {
+  background: transparent;
+  font-size: 1.2rem;
   height: 30px;
   width: 30px;
   border: none;
   cursor: pointer;
   border-radius: 30%;
   margin: 1%;
-  flex: 1 1 40%;
+  transition: transform 500ms ease-in-out;
+  pointer-events: none;
+  flex: 1 1 30%;
+}
+
+.triggerscale.clicked .add-project-btn,
+.triggerscale.clicked .add-task-btn {
+  transform: scale(1.3);
 }
 
 .add-project-form input[type="text"]:focus {
@@ -121,6 +131,7 @@ aside {
   border: none;
   cursor: pointer;
   border-radius: 30%;
+  transition: transform 500ms ease-in-out;
   margin: 1%;
 }
 
@@ -136,7 +147,6 @@ section {
   align-items: center;
   padding: 2%;
   flex: 1 1 100%;
-
   transition: 0.3s box-shadow;
 }
 
